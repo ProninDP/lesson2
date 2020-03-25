@@ -1,4 +1,5 @@
 let field = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+// eslint-disable-next-line no-unused-vars
 let currentPlayer = 1;
 
 function getField() {

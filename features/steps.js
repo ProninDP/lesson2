@@ -3,6 +3,7 @@ const request = require('supertest');
 const controller = require('../src/game.js');
 const app = require('../src/server.js');
 
+// eslint-disable-next-line no-unused-vars
 let lastResult = {};
 
 Given('пустое поле', () => {
@@ -13,6 +14,9 @@ Given('ходит игрок {int}', (int) => {
   controller.setCurrentPlayer(int);
 });
 
-Given('игрок ходит в клетку {int}, {int}', (x, y) => request(app).post('/move').send({ x, y }).then((res) => {
-  lastResult = res;
-}));
+// eslint-disable-next-line arrow-body-style
+Given('игрок ходит в клетку {int}, {int}', (x, y) => {
+  return request(app).post('/move').send({ x, y }).then((res) => {
+    lastResult = res;
+  });
+});
