@@ -1,7 +1,7 @@
 const { Given, Then, When } =require('cucumber');
 const request = require('supertest');
-const controller = require('../src/game');
-const app = require('../src/server');
+const controller = require('../src/game.js');
+const app = require('../src/server.js');
 let lastResult = {};
 
 

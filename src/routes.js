@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controller = require('./game');
+const controller = require('./game.js');
 
 router.get('/getField', (req, res) => {
     res.send(200, controller.getField());
