@@ -6,7 +6,7 @@ router.get('/getField', (req, res) => {
 });
 
 router.post('/move', (req, res) => {
-  controller.makeMove(req.body.x, req.body.y);
+  controller.makeMove(req.body.x - 1, req.body.y - 1);
   res.status(200).send('ok');
 });
 

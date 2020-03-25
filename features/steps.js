@@ -20,3 +20,7 @@ Given('игрок ходит в клетку {int}, {int}', (x, y) => {
     lastResult = res;
   });
 });
+
+Then('поле становится {string}', (str) => {
+
+});
