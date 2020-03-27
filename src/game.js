@@ -1,66 +1,80 @@
 let field = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 // eslint-disable-next-line no-unused-vars
 let currentPlayer = 1;
-let currentWinner = 0;
 let status = 'Ok';
 
-function getField() {
-  return field;
-}
 function setStatus(string) {
   status = string;
+}
+function setCurrentPlayer(i) {
+  currentPlayer = i;
+}
+function getCurrentPlayer() {
+  return currentPlayer;
+}
+function setField(x, y) {
+  field[y][x] = getCurrentPlayer();
+}
+function getField() {
+  return field;
 }
 function getStatus() {
   return status;
 }
-
+// поиск победителя
 function win(field, currentPlayer) {
   // строки
   for (let row = 0; row < 3; row += 1) {
     if (field[row][0] === field[row][1] && field[row][0] === field[row][2]) {
-      currentWinner = field[row][0];
-      return currentWinner === currentPlayer;
+      return currentPlayer === field[row][0];
     }
   }
   // колонки
   for (let column = 0; column < 3; column += 1) {
     if (field[0][column] === field[1][column] && field[0][column] === field[2][column]) {
-      currentWinner = field[0][column];
-      return currentWinner === currentPlayer;
+      return currentPlayer === field[0][column];
     }
   }
   // диагональ
   if (field[0][0] === field[1][1] && field[0][0] === field[2][2]) {
-    currentWinner = field[0][0];
-    return currentWinner === currentPlayer;
+    return currentPlayer === field[0][0];
   }
   // диагональ
   if (field[2][0] === field[1][1] && field[2][0] === field[0][2]) {
-    currentWinner = field[2][0];
-    return currentWinner === currentPlayer;
+    return currentPlayer === field[2][0];
   }
 }
-
+// сброс поля
 function reset() {
   field = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 }
-
+// ход игрока для игры
 function makeMove(x, y) {
-  if (field[y][x] === 0) {
-    field[y][x] = currentPlayer;
+  if (getField()[y][x] === 0) {
+    setField(x, y);
     setStatus('Ok');
-    //if (win(field, currentPlayer)) reset();
+    if (win(getField(), getCurrentPlayer())) reset();
+    if (getCurrentPlayer() === 1) {
+      setCurrentPlayer(2);
+    } else {
+      setCurrentPlayer(1);
+    }
   } else {
     setStatus('Ошибка');
   }
 }
-
+// ход игрока для тестов
+function makeMoveForTest(x, y) {
+  if (field[y][x] === 0) {
+    field[y][x] = getCurrentPlayer();
+    setStatus('Ok');
+  } else {
+    setStatus('Ошибка');
+  }
+}
+// начальное поле для тестов
 function presetField(newField) {
   field = newField;
-}
-
-function setCurrentPlayer(i) {
-  currentPlayer = i;
 }
 
 module.exports = {
@@ -72,4 +86,5 @@ module.exports = {
   setStatus,
   getStatus,
   win,
+  makeMoveForTest,
 };

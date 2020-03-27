@@ -20,7 +20,7 @@ Given('ходит игрок {int}', (int) => {
 
 // eslint-disable-next-line arrow-body-style
 Given('игрок ходит в клетку {int}, {int}', (x, y) => {
-  return request(app).post('/move').send({ x, y }).then((res) => {
+  return request(app).post('/moveTest').send({ x, y }).then((res) => {
     lastResult = res;
   });
 });
