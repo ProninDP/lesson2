@@ -22,26 +22,28 @@ function getStatus() {
   return status;
 }
 // поиск победителя
-function win(field, currentPlayer) {
+// eslint-disable-next-line consistent-return
+function win(currField, currPlayer) {
   // строки
   for (let row = 0; row < 3; row += 1) {
-    if (field[row][0] === field[row][1] && field[row][0] === field[row][2]) {
-      return currentPlayer === field[row][0];
+    if (currField[row][0] === currField[row][1] && currField[row][0] === currField[row][2]) {
+      return currPlayer === currField[row][0];
     }
   }
   // колонки
   for (let column = 0; column < 3; column += 1) {
-    if (field[0][column] === field[1][column] && field[0][column] === field[2][column]) {
-      return currentPlayer === field[0][column];
+    // eslint-disable-next-line max-len
+    if (currField[0][column] === currField[1][column] && currField[0][column] === currField[2][column]) {
+      return currPlayer === currField[0][column];
     }
   }
   // диагональ
-  if (field[0][0] === field[1][1] && field[0][0] === field[2][2]) {
-    return currentPlayer === field[0][0];
+  if (currField[0][0] === currField[1][1] && currField[0][0] === currField[2][2]) {
+    return currPlayer === currField[0][0];
   }
   // диагональ
-  if (field[2][0] === field[1][1] && field[2][0] === field[0][2]) {
-    return currentPlayer === field[2][0];
+  if (currField[2][0] === currField[1][1] && currField[2][0] === currField[0][2]) {
+    return currPlayer === currField[2][0];
   }
 }
 // сброс поля

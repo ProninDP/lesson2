@@ -37,7 +37,7 @@ Then('поле становится {string}', (str) => {
     for (let i = 0; i < 3; i += 1) {
       tempField[i] = [];
       for (let j = 0; j < 3; j += 1) {
-        tempField[i][j] = parseInt(tempStr[index]);
+        tempField[i][j] = tempStr[index];
         index += 1;
       }
     }
@@ -56,7 +56,7 @@ Given('поле {string}', (str) => {
   for (let i = 0; i < 3; i += 1) {
     tempField[i] = [];
     for (let j = 0; j < 3; j += 1) {
-      tempField[i][j] = parseInt(tempStr[index]);
+      tempField[i][j] = tempStr[index];
       index += 1;
     }
   }
