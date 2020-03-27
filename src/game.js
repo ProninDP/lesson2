@@ -54,6 +54,7 @@ function makeMove(x, y) {
     setField(x, y);
     setStatus('Ok');
     if (win(getField(), getCurrentPlayer())) reset();
+    if (getField().length === 9) reset();
     if (getCurrentPlayer() === 1) {
       setCurrentPlayer(2);
     } else {
