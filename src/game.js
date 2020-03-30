@@ -68,8 +68,8 @@ function makeMove(x, y) {
 }
 // ход игрока для тестов
 function makeMoveForTest(x, y) {
-  if (field[y][x] === 0) {
-    field[y][x] = getCurrentPlayer();
+  if (getField()[y][x] === 0) {
+    setField[y][x] = getCurrentPlayer();
     setStatus('Ok');
   } else {
     setStatus('Ошибка');
